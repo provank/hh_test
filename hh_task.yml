@@ -1,0 +1,29 @@
+- name: Example Task HH
+  hosts: all
+
+  tasks:
+    - name: Install NMP
+      apt:
+        name:
+          - nginx
+          - mysql-server
+          - php-fpm
+        state: present
+
+    - name: nginx-conf
+      copy:
+        src: ./default
+        dest: /etc/nginx/sites-available
+
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+
+    - name: phpinfo
+      copy:
+        src: ./index.php
+        dest: /var/www
+        owner: www-data
+        group: www-data
+        mode: "0644"
