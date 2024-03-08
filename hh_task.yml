@@ -23,7 +23,7 @@
     - name: phpinfo
       copy:
         src: ./index.php
-        dest: /var/www
+        dest: /var/www/html
         owner: www-data
         group: www-data
         mode: "0644"
